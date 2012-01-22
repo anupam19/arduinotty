@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<project name="arduinotty" default="build" basedir=".">
+  <target name="build" depends="buildlib">
+    <mkdir dir="../bin" />
+    <copy file="../arduinotty/arduinotty.png" tofile="../bin/arduinotty.png"/>
+    <csc target="exe" output="../bin/arduinotty.exe">
+      <references>
+        <include name="../bin/libarduinotty.dll"/>
+        <include name="/usr/lib/cli/gdk-sharp-2.0/gdk-sharp.dll"/>
+        <include name="/usr/lib/cli/glib-sharp-2.0/glib-sharp.dll"/>
+        <include name="/usr/lib/cli/gtk-sharp-2.0/gtk-sharp.dll"/>
+        <include name="/usr/lib/mono/2.0/Mono.Posix.dll"/>
+        <include name="/usr/lib/mono/4.0/System.dll"/>
+        <include name="/usr/lib/mono/4.0/System.Xml.dll"/>
+      </references>
+      <sources>
+        <include name="../arduinotty/Main.cs"/>
+        <include name="../arduinotty/MainWindow.cs"/>
+        <include name="../arduinotty/gtk-gui/arduinotty.MainWindow.cs"/>
+        <include name="../arduinotty/gtk-gui/generated.cs"/>
+      </sources>
+    </csc>
+  </target>
+  <target name="buildlib">
+    <mkdir dir="../bin"/>
+    <csc target="library" output="../bin/libarduinotty.dll">
+      <references>
+        <include name="/usr/lib/cli/gdk-sharp-2.0/gdk-sharp.dll"/>
+        <include name="/usr/lib/cli/glib-sharp-2.0/glib-sharp.dll"/>
+        <include name="/usr/lib/cli/gtk-sharp-2.0/gtk-sharp.dll"/>
+        <include name="/usr/lib/mono/2.0/Mono.Posix.dll"/>
+        <include name="/usr/lib/mono/4.0/System.dll"/>
+        <include name="/usr/lib/mono/4.0/System.Xml.dll"/>
+      </references>
+      <sources>
+        <include name="../libarduinotty/ArduinoSerial.cs"/>
+        <include name="../libarduinotty/ByteTreeNode.cs"/>
+        <include name="../libarduinotty/ByteTreeNode.cs"/>
+        <include name="../libarduinotty/Widgets/ConnectionWidget.cs"/>
+        <include name="../libarduinotty/Widgets/ReceivedBytesWidget.cs"/>
+        <include name="../libarduinotty/Widgets/TransmittedBytesWidget.cs"/>
+        <include name="../libarduinotty/Widgets/TransmitWidget.cs"/>
+        <include name="../libarduinotty/gtk-gui/generated.cs"/>
+        <include name="../libarduinotty/gtk-gui/libarduinotty.Widgets.ConnectionWidget.cs"/>
+        <include name="../libarduinotty/gtk-gui/libarduinotty.Widgets.ReceivedBytesWidget.cs"/>
+        <include name="../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmittedBytesWidget.cs"/>
+        <include name="../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmitWidget.cs"/>
+      </sources>
+    </csc>
+  </target>
+  <target name="clean">
+    <delete dir="../bin" failonerror="false"/>
+  </target>
+  <target name="run" depends="build">
+    <exec program="arduinotty.exe" basedir="../bin"/>
+  </target>
+  <target name="install" depends="build">
+    <mkdir dir="/usr/share/arduinotty"/>
+    <mkdir dir="/usr/bin"/>
+    <mkdir dir="/usr/share/applications"/>
+    <copy file="../bin/arduinotty.exe" tofile="/usr/share/arduinotty/arduinotty.exe"/>
+    <copy file="../bin/libarduinotty.dll" tofile="/usr/share/arduinotty/libarduinotty.dll"/>
+    <copy file="../bin/arduinotty.png" tofile="/usr/share/arduinotty/arduinotty.png"/>
+    <copy file="../arduinotty/arduinotty" tofile="/usr/bin/arduinotty"/>
+    <copy file="../arduinotty/arduinotty.desktop" tofile="/usr/share/applications/arduinotty.desktop"/>
+  </target>
+  <target name="uninstall">
+    <delete file="/usr/bin/arduinotty"/>
+    <delete file="/usr/share/applications/arduinotty.desktop"/>
+    <delete file="/usr/share/arduinotty/arduinotty.exe"/>
+    <delete file="/usr/share/arduinotty/libarduinotty.dll"/>
+    <delete file="/usr/share/arduinotty/arduinotty.png"/>
+    <delete dir="/usr/share/arduinotty"/>
+  </target>
+</project>

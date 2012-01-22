@@ -1,0 +1,25 @@
+##############################################################
+# "Arduino TTY" - A serial terminal for the Arduino platform.
+##############################################################
+
+CHANGELOG:
+
+"Arduino TTY v0.1", released on 14-January-2012:
+
+   - "MainWindow" class written.
+
+   - "TransmittedBytesWidget" class written.
+
+   - "ReceivedBytesWidget" class written.
+
+   - "ByteTreeNode" class written.
+
+   - "TransmitWidget" class written.
+
+   - "ConnectionWidget" class written.
+
+   - "ArduinoSerial" class written, with this class you
+     can connect und disconnect to an Arduino.
+     If you're connected you can receive and transmit 
+     bytes from and to your Arduino.
+

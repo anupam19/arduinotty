@@ -1,0 +1,13 @@
+##############################################################
+# "Arduino TTY" - A serial terminal for the Arduino platform.
+##############################################################
+
+TODO:
+
+"Arduino TTY v0.3":
+
+   - Add language support.
+
+"Arduino TTY v0.2":
+
+   - Add a notify-icon, to show and hide the "MainWindow".

@@ -1,0 +1,33 @@
+##############################################################
+# "Arduino TTY" - A serial terminal for the Arduino platform.
+##############################################################
+
+README:
+
+1. About "Arduino TTY":
+   
+   "Arduino TTY" is a serial terminal for Arduino boards.
+   It's possible to use other RS232 compatible devices too.
+
+
+2. How to compile and install:
+
+   Please read the textfile "INSTALL" to get more information about
+   compiling and installing this application.
+
+
+3. Which license uses "Arduino TTY":
+
+   "Arduino TTY" uses the "GNU GENERAL PUBLIC LICENSE - Version 2" license.
+   Please read the textfile "COPYING" to get more information about
+   this license.
+         
+
+4. How can I contribute to this project:
+ 	
+   First, if you want, you can correct my spelling errors. ( My english is poor! ^^ )
+   You can send me better code and bugs-messages.
+   Send me things, which will make "Arduino TTY" better.
+
+   Homepage: http://code.google.com/p/arduinotty/
+   E-mail: arduinotty@gmail.com

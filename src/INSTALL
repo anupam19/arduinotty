@@ -1,0 +1,120 @@
+##############################################################
+# "Arduino TTY" - A serial terminal for the Arduino platform.
+##############################################################
+
+INSTALL:
+
+1. Compiling and Installation in Linux:
+
+1.1. Install dependencies:
+
+     You need "mono" and "gtk-sharp-2.0" to run "Arduino TTY" 
+     and "nant" to compile it.
+     
+     Ubuntu Oneric Ocelot: 
+     
+     sudo apt-get update
+     sudo apt-get install mono-runtime gtk-sharp2 nant
+
+1.2. Compile and install "Arduino TTY":
+
+    Open the bash-terminal and change the current-directory to 
+    the directory where this files lies.
+    To compile and install type in the following commands:
+ 
+    Generic linux:
+
+    1. nant -buildfile:build-files/linux.build
+    2. sudo nant -buildfile:build-files/linux.build install
+
+    To uninstall this application type:
+    sudo nant -buildfile:build-files/linux.build uninstall
+
+    Ubuntu Oneric Ocelot:
+
+    1. nant -buildfile:build-files/ubuntu11.10.build
+    2. sudo nant -buildfile:build-files/ubuntu11.10.build install
+
+    To uninstall this application type:
+    sudo nant -buildfile:build-files/ubuntu11.10.build uninstall
+
+1.3. Compiling problems
+
+    Maybe, you encountered a message like this, at the command
+    "nant -buildfile:build-files/linux.build".
+
+    The type or namespace name `Gtk' could not be found in the global
+    namespace (are you missing an assembly reference?)
+
+    The problem is, that pkg-config can't find one or more needed libraries, 
+    So you have to adapt the file "linux.build" in the directory "build-files".
+
+    Open the file "linux.build" with a text-editor and look for these two blocks:
+
+    1. Block:
+
+    <references>
+      <include name="../bin/libarduinotty.dll"/>
+      <include name="gdk-sharp.dll"/>
+      <include name="glib-sharp.dll"/>
+      <include name="gtk-sharp.dll"/>
+      <include name="Mono.Posix.dll"/>
+      <include name="System.dll"/>
+      <include name="System.Xml.dll"/>
+    </references>
+
+    2. Block
+
+    <references>
+      <include name="gdk-sharp.dll"/>
+      <include name="glib-sharp.dll"/>
+      <include name="gtk-sharp.dll"/>
+      <include name="Mono.Posix.dll"/>
+      <include name="System.dll"/>
+      <include name="System.Xml.dll"/>
+    </references>
+
+    You have to declare the full path of every listed library, 
+    except for the library "libarduinotty.dll".
+    Use "locate" to find out the full paths of these libraries.
+
+    Example:
+    locate gtk-sharp.dll
+
+    For Ubuntu 11.10 the blocks would look like this:
+
+    1. Block
+    
+    <references>
+      <include name="../bin/libarduinotty.dll"/>
+      <include name="/usr/lib/cli/gdk-sharp-2.0/gdk-sharp.dll"/>
+      <include name="/usr/lib/cli/glib-sharp-2.0/glib-sharp.dll"/>
+      <include name="/usr/lib/cli/gtk-sharp-2.0/gtk-sharp.dll"/>
+      <include name="/usr/lib/mono/2.0/Mono.Posix.dll"/>
+      <include name="/usr/lib/mono/4.0/System.dll"/>
+      <include name="/usr/lib/mono/4.0/System.Xml.dll"/>
+    </references>
+
+    2. Block
+
+    <references>
+      <include name="/usr/lib/cli/gdk-sharp-2.0/gdk-sharp.dll"/>
+      <include name="/usr/lib/cli/glib-sharp-2.0/glib-sharp.dll"/>
+      <include name="/usr/lib/cli/gtk-sharp-2.0/gtk-sharp.dll"/>
+      <include name="/usr/lib/mono/2.0/Mono.Posix.dll"/>
+      <include name="/usr/lib/mono/4.0/System.dll"/>
+      <include name="/usr/lib/mono/4.0/System.Xml.dll"/>
+    </references>
+
+    When you're ready, save this file.
+
+    Now you can execute the command "nant -buildfile:build-files/linux.build" to compile 
+    "Arduino TTY v0.1" and "nant -buildfile:build-files/linux.build install" to install it.
+
+    Please send me your your "linux.build" with the information, 
+    which linux system you're using, via E-Mail to me.
+    
+    E-mail: arduinotty@gmail.com
+
+    This would be nice, because I can add these files into the next release of "Arduino TTY".
+

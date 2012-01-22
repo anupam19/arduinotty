@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stetic-interface>
+  <configuration>
+    <images-root-path>..</images-root-path>
+    <target-gtk-version>2.12</target-gtk-version>
+  </configuration>
+  <import>
+    <widget-library name="../../bin/libarduinotty.dll" />
+    <widget-library name="../../bin/arduinotty.exe" internal="true" />
+  </import>
+  <widget class="Gtk.Window" id="arduinotty.MainWindow" design-size="606 428">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">Arduino TTY</property>
+    <property name="Icon">file:./arduinotty.png</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <signal name="DeleteEvent" handler="OnDeleteEvent" />
+    <child>
+      <widget class="Gtk.VBox" id="VBox">
+        <property name="MemberName" />
+        <property name="Spacing">6</property>
+        <child>
+          <widget class="Gtk.HBox" id="HBox">
+            <property name="MemberName" />
+            <property name="Spacing">6</property>
+            <child>
+              <widget class="Gtk.Alignment" id="AlignmentLeft">
+                <property name="MemberName" />
+                <child>
+                  <placeholder />
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">0</property>
+                <property name="AutoSize">True</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="libarduinotty.Widgets.ConnectionWidget" id="ConnectionWidget">
+                <property name="MemberName" />
+                <property name="Events">ButtonPressMask</property>
+                <property name="HideBaudrate">False</property>
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.VSeparator" id="VSeparator1">
+                <property name="MemberName" />
+              </widget>
+              <packing>
+                <property name="Position">2</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.ComboBox" id="FilterComboBox">
+                <property name="MemberName" />
+                <property name="IsTextCombo">True</property>
+                <property name="Items" translatable="yes">Received
+Transmitted
+Both</property>
+                <property name="Active">0</property>
+                <signal name="Changed" handler="OnFilterComboBoxChanged" />
+              </widget>
+              <packing>
+                <property name="Position">3</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Alignment" id="AlignmentRight">
+                <property name="MemberName" />
+                <child>
+                  <placeholder />
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">4</property>
+                <property name="AutoSize">True</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.HSeparator" id="HSeparatorUp">
+            <property name="MemberName" />
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.HPaned" id="HPaned">
+            <property name="MemberName" />
+            <property name="WidthRequest">600</property>
+            <property name="CanFocus">True</property>
+            <property name="Position">300</property>
+            <child>
+              <widget class="libarduinotty.Widgets.ReceivedBytesWidget" id="ReceivedBytesWidget">
+                <property name="MemberName" />
+                <property name="Events">ButtonPressMask</property>
+                <property name="HideNewButton">False</property>
+                <property name="HideOpenButton">False</property>
+                <property name="HideSaveButton">False</property>
+                <property name="HideTransmitButton">False</property>
+              </widget>
+              <packing>
+                <property name="Resize">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="libarduinotty.Widgets.TransmittedBytesWidget" id="TransmittedBytesWidget">
+                <property name="MemberName" />
+                <property name="Visible">False</property>
+                <property name="Events">ButtonPressMask</property>
+                <property name="HideNewButton">False</property>
+                <property name="HideOpenButton">False</property>
+                <property name="HideSaveButton">False</property>
+                <property name="HideTransmitButton">False</property>
+              </widget>
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">2</property>
+            <property name="AutoSize">True</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.HSeparator" id="HSeparatorDown">
+            <property name="MemberName" />
+          </widget>
+          <packing>
+            <property name="Position">3</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="libarduinotty.Widgets.TransmitWidget" id="TransmitWidget">
+            <property name="MemberName" />
+            <property name="Events">ButtonPressMask</property>
+          </widget>
+          <packing>
+            <property name="Position">4</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+</stetic-interface>
