@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<project name="arduinotty" default="build" basedir=".">
+  <property name="nant.settings.currentframework" value="mono-4.0"/>
+  <target name="build" depends="buildlib">
+    <mkdir dir="../bin" />
+    <copy file="../arduinotty/arduinotty.png" tofile="../bin/arduinotty.png"/>
+    <csc target="exe" output="../bin/arduinotty.exe">
+      <references>
+        <include name="../bin/libarduinotty.dll"/>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/gtk-sharp-2.0/atk-sharp.dll"/>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/gtk-sharp-2.0/gdk-sharp.dll"/>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/gtk-sharp-2.0/glib-sharp.dll"/>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/gtk-sharp-2.0/gtk-sharp.dll"/>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/4.0/Mono.Posix.dll"/>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/4.0/System.dll"/>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/4.0/System.Xml.dll"/>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/gtk-sharp-2.0/pango-sharp.dll"/>
+      </references>
+      <sources>
+        <include name="../arduinotty/Main.cs"/>
+        <include name="../arduinotty/MainWindow.cs"/>
+        <include name="../arduinotty/Preferences.cs"/>
+        <include name="../arduinotty/PreferencesDialog.cs"/>
+        <include name="../arduinotty/gtk-gui/arduinotty.MainWindow.cs"/>
+        <include name="../arduinotty/gtk-gui/arduinotty.PreferencesDialog.cs"/>
+        <include name="../arduinotty/gtk-gui/generated.cs"/>
+      </sources>
+    </csc>
+  </target>
+  <target name="buildlib" depends="buildlocale">
+    <mkdir dir="../bin"/>
+    <csc target="library" output="../bin/libarduinotty.dll">
+      <references>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/gtk-sharp-2.0/atk-sharp.dll"/>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/gtk-sharp-2.0/gdk-sharp.dll"/>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/gtk-sharp-2.0/glib-sharp.dll"/>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/gtk-sharp-2.0/gtk-sharp.dll"/>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/4.0/Mono.Posix.dll"/>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/4.0/System.dll"/>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/4.0/System.Xml.dll"/>
+        <include name="/Library/Frameworks/Mono.framework/Libraries/mono/gtk-sharp-2.0/pango-sharp.dll"/>
+      </references>
+      <sources>
+        <include name="../libarduinotty/ArduinoSerial.cs"/>
+        <include name="../libarduinotty/ByteTreeNode.cs"/>
+        <include name="../libarduinotty/ByteTreeNode.cs"/>
+        <include name="../libarduinotty/Widgets/ConnectionWidget.cs"/>
+        <include name="../libarduinotty/Widgets/ReceivedBytesWidget.cs"/>
+        <include name="../libarduinotty/Widgets/TransmittedBytesWidget.cs"/>
+        <include name="../libarduinotty/Widgets/TransmitWidget.cs"/>
+        <include name="../libarduinotty/gtk-gui/generated.cs"/>
+        <include name="../libarduinotty/gtk-gui/libarduinotty.Widgets.ConnectionWidget.cs"/>
+        <include name="../libarduinotty/gtk-gui/libarduinotty.Widgets.ReceivedBytesWidget.cs"/>
+        <include name="../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmittedBytesWidget.cs"/>
+        <include name="../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmitWidget.cs"/>
+      </sources>
+    </csc>
+  </target>
+  <target name="buildlocale">
+    <mkdir dir="../bin/locale/de/LC_MESSAGES"/>
+    <mkdir dir="../bin/locale/en/LC_MESSAGES"/>
+    <exec program="/Library/Frameworks/Mono.framework/Commands/msgfmt">
+      <arg value="../Translations/de.po"/>
+      <arg value="-o"/>
+      <arg value="../bin/locale/de/LC_MESSAGES/arduinotty.mo"/>
+    </exec>
+    <exec program="/Library/Frameworks/Mono.framework/Commands/msgfmt">
+      <arg value="../Translations/en.po"/>
+      <arg value="-o"/>
+      <arg value="../bin/locale/en/LC_MESSAGES/arduinotty.mo"/>
+    </exec>
+  </target>
+  <target name="clean">
+    <delete dir="../bin" failonerror="false"/>
+  </target>
+  <target name="run" depends="build">
+    <exec program="arduinotty.exe" basedir="../bin"/>
+  </target>
+</project>

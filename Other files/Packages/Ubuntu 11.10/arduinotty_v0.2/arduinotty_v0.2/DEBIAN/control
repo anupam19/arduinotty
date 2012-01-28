@@ -1,0 +1,19 @@
+Package: arduinotty
+Version: 0.2
+Section: x11
+Priority: optional
+Architecture: all
+Depends: mono-runtime, gtk-sharp2, libnotify0.4-cil
+Installed-Size: 355
+Maintainer: arduinotty <arduinotty@gmail.com>
+Description: "Arduino TTY" - A serial terminal for the Arduino platform.
+ "Arduino TTY" is a serial terminal for the Arduino platform.
+ During a connection with an Arduino board, you can transmit and receive bytes
+ in following formats:
+ .
+ Binary, Octal, Decimal, Hexadecimal and Text in ASCII format 
+ .
+ "Arduino TTY" runs on Windows XP/Vista/7, Ubuntu Linux 11.10 and
+ other linux based operating systems. 
+ .
+ Homepage: http://code.google.com/p/arduinotty

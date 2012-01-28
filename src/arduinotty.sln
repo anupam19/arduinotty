@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libarduinotty", "libarduino
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "arduinotty", "arduinotty\arduinotty.csproj", "{C5D0FDC6-D0D1-45E4-8D79-A7182B855A92}"
 EndProject
+Project("{9344bdbb-3e7f-41fc-a0dd-8665d75ee146}") = "Translations", "Translations\Translations.mdproj", "{51DE3BEC-29DC-4BCB-98EE-813D60A78DA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1B589A59-6A77-44EA-A221-5465334DE05C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B589A59-6A77-44EA-A221-5465334DE05C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B589A59-6A77-44EA-A221-5465334DE05C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51DE3BEC-29DC-4BCB-98EE-813D60A78DA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51DE3BEC-29DC-4BCB-98EE-813D60A78DA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51DE3BEC-29DC-4BCB-98EE-813D60A78DA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51DE3BEC-29DC-4BCB-98EE-813D60A78DA0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C5D0FDC6-D0D1-45E4-8D79-A7182B855A92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C5D0FDC6-D0D1-45E4-8D79-A7182B855A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5D0FDC6-D0D1-45E4-8D79-A7182B855A92}.Release|Any CPU.ActiveCfg = Release|Any CPU

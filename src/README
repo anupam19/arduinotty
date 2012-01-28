@@ -25,8 +25,9 @@ README:
 
 4. How can I contribute to this project:
  	
-   First, if you want, you can correct my spelling errors. ( My english is poor! ^^ )
-   You can send me better code and bugs-messages.
+   You can send me better code and bugs-messages,
+   as well you can translate the file "Translations/en.po"
+   to your foreign language.
    Send me things, which will make "Arduino TTY" better.
 
    Homepage: http://code.google.com/p/arduinotty/

@@ -51,11 +51,14 @@ namespace libarduinotty
 		{
 			get { return SerialPort.GetPortNames(); }
 		}
+		public static bool FreezeReceivedBytes = false;
+		public static bool FreezeTransmittedBytes = false;
 		#endregion
 
 		#region Public methods
 		public static bool Connect(string portName, int baudrate)
 		{
+			if(Connected) return false;
 			string os = Environment.OSVersion.Platform.ToString();
 			try
 			{
@@ -122,13 +125,16 @@ namespace libarduinotty
 				return;
 			}
 			p_SerialPort.Write(writeBuffer, 0, writeBuffer.Length);
-			for(int i = 0; i < writeBuffer.Length; i++)
+			if(!FreezeTransmittedBytes)
 			{
-				for(int g = 0; g < p_TransmittedBytesBuffers.Count; g++)
+				for(int i = 0; i < writeBuffer.Length; i++)
 				{
-					if(p_TransmittedBytesBuffers[g] != null)
+					for(int g = 0; g < p_TransmittedBytesBuffers.Count; g++)
 					{
-						p_TransmittedBytesBuffers[g].Add(writeBuffer[i]);
+						if(p_TransmittedBytesBuffers[g] != null)
+						{
+							p_TransmittedBytesBuffers[g].Add(writeBuffer[i]);
+						}
 					}
 				}
 			}
@@ -138,7 +144,7 @@ namespace libarduinotty
 		{
 			TransmitBytes(writeBuffer.ToArray());
 		}
-		public static void SaveBuffer(string filename, List<byte> buffer)
+		public static void SaveBufferAXML(string filename, List<byte> buffer)
 		{
 			try
 			{
@@ -151,7 +157,7 @@ namespace libarduinotty
 			{}
 		}
 		
-		public static List<byte> LoadBuffer(string filename)
+		public static List<byte> LoadBufferAXML(string filename)
 		{
 			try
 			{
@@ -160,6 +166,65 @@ namespace libarduinotty
 				List<byte> l = (List<byte>)serializer.Deserialize(fs);
 				fs.Close();
 				return l;
+			}
+			catch
+			{
+				return new List<byte>();
+			}
+		}
+		
+		public static void SaveBufferTXT(string filename, List<byte> buffer)
+		{
+			try
+			{
+				TextWriter tw = new StreamWriter(filename);
+				System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
+				tw.Write(enc.GetString(buffer.ToArray()));
+				tw.Close();
+			}
+			catch
+			{}
+		}
+		
+		public static List<byte> LoadBufferTXT(string filename)
+		{
+			try
+			{
+				TextReader tr = new StreamReader(filename);
+				string text = tr.ReadToEnd();
+				tr.Close();
+				System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
+				List<byte> bytes = new List<byte>(enc.GetBytes(text));
+    			return bytes;
+			}
+			catch
+			{
+				return new List<byte>();
+			}
+		}
+		
+		public static void SaveBufferBIN(string filename, List<byte> buffer)
+		{
+			try
+			{
+				FileStream fs = new FileStream(filename, FileMode.Create);
+				BinaryWriter bw = new BinaryWriter(fs);
+				bw.Write(buffer.ToArray());
+				bw.Close();
+			}
+			catch
+			{}
+		}
+		
+		public static List<byte> LoadBufferBIN(string filename)
+		{
+			try
+			{
+				FileStream fs = new FileStream(filename, FileMode.Open);
+				BinaryReader br = new BinaryReader(fs);
+				List<byte> bytes = new List<byte>(br.ReadBytes(Convert.ToInt32(br.BaseStream.Length)));
+				br.Close();
+    			return bytes;
 			}
 			catch
 			{
@@ -180,17 +245,21 @@ namespace libarduinotty
 					{
 						byte[] readBuffer = new byte[p_SerialPort.BytesToRead];
 						p_SerialPort.Read(readBuffer, 0, readBuffer.Length);
-						for(int i = 0; i < readBuffer.Length; i++)
+						if(!FreezeReceivedBytes)
 						{
-							for(int g = 0; g < p_ReceivedBytesBuffers.Count; g++)
+							for(int i = 0; i < readBuffer.Length; i++)
 							{
-								if(p_ReceivedBytesBuffers[g] != null)
+								Console.Out.WriteLine(readBuffer[i]);
+								for(int g = 0; g < p_ReceivedBytesBuffers.Count; g++)
 								{
-									p_ReceivedBytesBuffers[g].Add(readBuffer[i]);
+									if(p_ReceivedBytesBuffers[g] != null)
+									{
+										p_ReceivedBytesBuffers[g].Add(readBuffer[i]);
+									}
 								}
 							}
+							if(BytesReceived != null) Gtk.Application.Invoke(BytesReceived);
 						}
-						if(BytesReceived != null) Gtk.Application.Invoke(BytesReceived);
 					}
 				}
 			}

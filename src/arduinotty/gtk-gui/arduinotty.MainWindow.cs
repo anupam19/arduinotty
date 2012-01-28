@@ -10,6 +10,9 @@ namespace arduinotty
 		private global::libarduinotty.Widgets.ConnectionWidget ConnectionWidget;
 		private global::Gtk.VSeparator VSeparator1;
 		private global::Gtk.ComboBox FilterComboBox;
+		private global::Gtk.VSeparator VSeparator2;
+		private global::Gtk.Button PreferencesButton;
+		private global::Gtk.Button AboutButton;
 		private global::Gtk.Alignment AlignmentRight;
 		private global::Gtk.HSeparator HSeparatorUp;
 		private global::Gtk.HPaned HPaned;
@@ -25,7 +28,7 @@ namespace arduinotty
 			this.Name = "arduinotty.MainWindow";
 			this.Title = global::Mono.Unix.Catalog.GetString ("Arduino TTY");
 			this.Icon = new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./arduinotty.png"));
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Container child arduinotty.MainWindow.Gtk.Container+ContainerChild
 			this.VBox = new global::Gtk.VBox ();
 			this.VBox.Name = "VBox";
@@ -44,6 +47,7 @@ namespace arduinotty
 			this.ConnectionWidget = new global::libarduinotty.Widgets.ConnectionWidget ();
 			this.ConnectionWidget.Events = ((global::Gdk.EventMask)(256));
 			this.ConnectionWidget.Name = "ConnectionWidget";
+			this.ConnectionWidget.Baudrate = 0;
 			this.ConnectionWidget.HideBaudrate = false;
 			this.HBox.Add (this.ConnectionWidget);
 			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.HBox [this.ConnectionWidget]));
@@ -71,24 +75,80 @@ namespace arduinotty
 			w4.Expand = false;
 			w4.Fill = false;
 			// Container child HBox.Gtk.Box+BoxChild
+			this.VSeparator2 = new global::Gtk.VSeparator ();
+			this.VSeparator2.Name = "VSeparator2";
+			this.HBox.Add (this.VSeparator2);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.HBox [this.VSeparator2]));
+			w5.Position = 4;
+			w5.Expand = false;
+			w5.Fill = false;
+			// Container child HBox.Gtk.Box+BoxChild
+			this.PreferencesButton = new global::Gtk.Button ();
+			this.PreferencesButton.CanFocus = true;
+			this.PreferencesButton.Name = "PreferencesButton";
+			this.PreferencesButton.UseUnderline = true;
+			// Container child PreferencesButton.Gtk.Container+ContainerChild
+			global::Gtk.Alignment w6 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			// Container child GtkAlignment.Gtk.Container+ContainerChild
+			global::Gtk.HBox w7 = new global::Gtk.HBox ();
+			w7.Spacing = 2;
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Image w8 = new global::Gtk.Image ();
+			w8.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-preferences", global::Gtk.IconSize.Menu);
+			w7.Add (w8);
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Label w10 = new global::Gtk.Label ();
+			w7.Add (w10);
+			w6.Add (w7);
+			this.PreferencesButton.Add (w6);
+			this.HBox.Add (this.PreferencesButton);
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.HBox [this.PreferencesButton]));
+			w14.Position = 5;
+			w14.Expand = false;
+			w14.Fill = false;
+			// Container child HBox.Gtk.Box+BoxChild
+			this.AboutButton = new global::Gtk.Button ();
+			this.AboutButton.CanFocus = true;
+			this.AboutButton.Name = "AboutButton";
+			this.AboutButton.UseUnderline = true;
+			// Container child AboutButton.Gtk.Container+ContainerChild
+			global::Gtk.Alignment w15 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			// Container child GtkAlignment.Gtk.Container+ContainerChild
+			global::Gtk.HBox w16 = new global::Gtk.HBox ();
+			w16.Spacing = 2;
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Image w17 = new global::Gtk.Image ();
+			w17.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-about", global::Gtk.IconSize.Menu);
+			w16.Add (w17);
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Label w19 = new global::Gtk.Label ();
+			w16.Add (w19);
+			w15.Add (w16);
+			this.AboutButton.Add (w15);
+			this.HBox.Add (this.AboutButton);
+			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.HBox [this.AboutButton]));
+			w23.Position = 6;
+			w23.Expand = false;
+			w23.Fill = false;
+			// Container child HBox.Gtk.Box+BoxChild
 			this.AlignmentRight = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.AlignmentRight.Name = "AlignmentRight";
 			this.HBox.Add (this.AlignmentRight);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.HBox [this.AlignmentRight]));
-			w5.Position = 4;
+			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.HBox [this.AlignmentRight]));
+			w24.Position = 7;
 			this.VBox.Add (this.HBox);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.VBox [this.HBox]));
-			w6.Position = 0;
-			w6.Expand = false;
-			w6.Fill = false;
+			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.VBox [this.HBox]));
+			w25.Position = 0;
+			w25.Expand = false;
+			w25.Fill = false;
 			// Container child VBox.Gtk.Box+BoxChild
 			this.HSeparatorUp = new global::Gtk.HSeparator ();
 			this.HSeparatorUp.Name = "HSeparatorUp";
 			this.VBox.Add (this.HSeparatorUp);
-			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.VBox [this.HSeparatorUp]));
-			w7.Position = 1;
-			w7.Expand = false;
-			w7.Fill = false;
+			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.VBox [this.HSeparatorUp]));
+			w26.Position = 1;
+			w26.Expand = false;
+			w26.Fill = false;
 			// Container child VBox.Gtk.Box+BoxChild
 			this.HPaned = new global::Gtk.HPaned ();
 			this.HPaned.WidthRequest = 600;
@@ -104,8 +164,8 @@ namespace arduinotty
 			this.ReceivedBytesWidget.HideSaveButton = false;
 			this.ReceivedBytesWidget.HideTransmitButton = false;
 			this.HPaned.Add (this.ReceivedBytesWidget);
-			global::Gtk.Paned.PanedChild w8 = ((global::Gtk.Paned.PanedChild)(this.HPaned [this.ReceivedBytesWidget]));
-			w8.Resize = false;
+			global::Gtk.Paned.PanedChild w27 = ((global::Gtk.Paned.PanedChild)(this.HPaned [this.ReceivedBytesWidget]));
+			w27.Resize = false;
 			// Container child HPaned.Gtk.Paned+PanedChild
 			this.TransmittedBytesWidget = new global::libarduinotty.Widgets.TransmittedBytesWidget ();
 			this.TransmittedBytesWidget.Events = ((global::Gdk.EventMask)(256));
@@ -116,35 +176,37 @@ namespace arduinotty
 			this.TransmittedBytesWidget.HideTransmitButton = false;
 			this.HPaned.Add (this.TransmittedBytesWidget);
 			this.VBox.Add (this.HPaned);
-			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.VBox [this.HPaned]));
-			w10.Position = 2;
+			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.VBox [this.HPaned]));
+			w29.Position = 2;
 			// Container child VBox.Gtk.Box+BoxChild
 			this.HSeparatorDown = new global::Gtk.HSeparator ();
 			this.HSeparatorDown.Name = "HSeparatorDown";
 			this.VBox.Add (this.HSeparatorDown);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.VBox [this.HSeparatorDown]));
-			w11.Position = 3;
-			w11.Expand = false;
-			w11.Fill = false;
+			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.VBox [this.HSeparatorDown]));
+			w30.Position = 3;
+			w30.Expand = false;
+			w30.Fill = false;
 			// Container child VBox.Gtk.Box+BoxChild
 			this.TransmitWidget = new global::libarduinotty.Widgets.TransmitWidget ();
 			this.TransmitWidget.Events = ((global::Gdk.EventMask)(256));
 			this.TransmitWidget.Name = "TransmitWidget";
 			this.VBox.Add (this.TransmitWidget);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.VBox [this.TransmitWidget]));
-			w12.Position = 4;
-			w12.Expand = false;
-			w12.Fill = false;
+			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.VBox [this.TransmitWidget]));
+			w31.Position = 4;
+			w31.Expand = false;
+			w31.Fill = false;
 			this.Add (this.VBox);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 606;
+			this.DefaultWidth = 701;
 			this.DefaultHeight = 428;
 			this.TransmittedBytesWidget.Hide ();
 			this.Show ();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 			this.FilterComboBox.Changed += new global::System.EventHandler (this.OnFilterComboBoxChanged);
+			this.PreferencesButton.Clicked += new global::System.EventHandler (this.OnPreferencesButtonClicked);
+			this.AboutButton.Clicked += new global::System.EventHandler (this.OnAboutButtonClicked);
 		}
 	}
 }

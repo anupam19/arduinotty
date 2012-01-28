@@ -18,8 +18,9 @@ namespace libarduinotty.Widgets
 		private global::Gtk.Button NewButton;
 		private global::Gtk.Button OpenButton;
 		private global::Gtk.Button SaveButton;
+		private global::Gtk.ToggleButton RecordToggleButton;
 		private global::Gtk.Button TransmitButton;
-		private global::Gtk.Alignment AlignmentRight;
+		private global::Gtk.Alignment alignment1;
         
 		protected virtual void Build ()
 		{
@@ -166,40 +167,65 @@ namespace libarduinotty.Widgets
 			w34.Expand = false;
 			w34.Fill = false;
 			// Container child HBox.Gtk.Box+BoxChild
-			this.TransmitButton = new global::Gtk.Button ();
-			this.TransmitButton.CanFocus = true;
-			this.TransmitButton.Name = "TransmitButton";
-			this.TransmitButton.UseUnderline = true;
-			// Container child TransmitButton.Gtk.Container+ContainerChild
+			this.RecordToggleButton = new global::Gtk.ToggleButton ();
+			this.RecordToggleButton.CanFocus = true;
+			this.RecordToggleButton.Name = "RecordToggleButton";
+			this.RecordToggleButton.UseUnderline = true;
+			this.RecordToggleButton.Active = true;
+			// Container child RecordToggleButton.Gtk.Container+ContainerChild
 			global::Gtk.Alignment w35 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w36 = new global::Gtk.HBox ();
 			w36.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
 			global::Gtk.Image w37 = new global::Gtk.Image ();
-			w37.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-apply", global::Gtk.IconSize.Menu);
+			w37.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-media-record", global::Gtk.IconSize.Menu);
 			w36.Add (w37);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
 			global::Gtk.Label w39 = new global::Gtk.Label ();
 			w36.Add (w39);
 			w35.Add (w36);
-			this.TransmitButton.Add (w35);
-			this.HBox.Add (this.TransmitButton);
-			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.HBox [this.TransmitButton]));
+			this.RecordToggleButton.Add (w35);
+			this.HBox.Add (this.RecordToggleButton);
+			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.HBox [this.RecordToggleButton]));
 			w43.Position = 4;
 			w43.Expand = false;
 			w43.Fill = false;
 			// Container child HBox.Gtk.Box+BoxChild
-			this.AlignmentRight = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
-			this.AlignmentRight.Name = "AlignmentRight";
-			this.HBox.Add (this.AlignmentRight);
-			global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.HBox [this.AlignmentRight]));
-			w44.Position = 5;
+			this.TransmitButton = new global::Gtk.Button ();
+			this.TransmitButton.CanFocus = true;
+			this.TransmitButton.Name = "TransmitButton";
+			this.TransmitButton.UseUnderline = true;
+			// Container child TransmitButton.Gtk.Container+ContainerChild
+			global::Gtk.Alignment w44 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			// Container child GtkAlignment.Gtk.Container+ContainerChild
+			global::Gtk.HBox w45 = new global::Gtk.HBox ();
+			w45.Spacing = 2;
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Image w46 = new global::Gtk.Image ();
+			w46.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-apply", global::Gtk.IconSize.Menu);
+			w45.Add (w46);
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Label w48 = new global::Gtk.Label ();
+			w45.Add (w48);
+			w44.Add (w45);
+			this.TransmitButton.Add (w44);
+			this.HBox.Add (this.TransmitButton);
+			global::Gtk.Box.BoxChild w52 = ((global::Gtk.Box.BoxChild)(this.HBox [this.TransmitButton]));
+			w52.Position = 5;
+			w52.Expand = false;
+			w52.Fill = false;
+			// Container child HBox.Gtk.Box+BoxChild
+			this.alignment1 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
+			this.alignment1.Name = "alignment1";
+			this.HBox.Add (this.alignment1);
+			global::Gtk.Box.BoxChild w53 = ((global::Gtk.Box.BoxChild)(this.HBox [this.alignment1]));
+			w53.Position = 6;
 			this.VBox.Add (this.HBox);
-			global::Gtk.Box.BoxChild w45 = ((global::Gtk.Box.BoxChild)(this.VBox [this.HBox]));
-			w45.Position = 2;
-			w45.Expand = false;
-			w45.Fill = false;
+			global::Gtk.Box.BoxChild w54 = ((global::Gtk.Box.BoxChild)(this.VBox [this.HBox]));
+			w54.Position = 2;
+			w54.Expand = false;
+			w54.Fill = false;
 			this.Add (this.VBox);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
@@ -209,6 +235,7 @@ namespace libarduinotty.Widgets
 			this.NewButton.Clicked += new global::System.EventHandler (this.OnNewButtonClicked);
 			this.OpenButton.Clicked += new global::System.EventHandler (this.OnOpenButtonClicked);
 			this.SaveButton.Clicked += new global::System.EventHandler (this.OnSaveButtonClicked);
+			this.RecordToggleButton.Clicked += new global::System.EventHandler (this.OnRecordToggleButtonClicked);
 			this.TransmitButton.Clicked += new global::System.EventHandler (this.OnTransmitButtonClicked);
 		}
 	}

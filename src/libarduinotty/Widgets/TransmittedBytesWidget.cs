@@ -97,11 +97,16 @@ namespace libarduinotty.Widgets
 		public TransmittedBytesWidget()
 		{
 			this.Build();
-			NodeView.AppendColumn ("Bin", new Gtk.CellRendererText (), "text", 0);
-			NodeView.AppendColumn ("Oct", new Gtk.CellRendererText (), "text", 1);
-			NodeView.AppendColumn ("Dec", new Gtk.CellRendererText (), "text", 2);
-			NodeView.AppendColumn ("Hex", new Gtk.CellRendererText (), "text", 3);
-			NodeView.AppendColumn ("ASCII", new Gtk.CellRendererText (), "text", 4);
+			NewButton.TooltipMarkup = Mono.Unix.Catalog.GetString("Create new byte-list.");
+			OpenButton.TooltipMarkup = Mono.Unix.Catalog.GetString("Open byte-list.");
+			SaveButton.TooltipMarkup = Mono.Unix.Catalog.GetString("Save byte-list.");
+			RecordToggleButton.TooltipMarkup = Mono.Unix.Catalog.GetString("Record outgoing bytes.");
+			TransmitButton.TooltipMarkup = Mono.Unix.Catalog.GetString("Transmit selected bytes.");
+			NodeView.AppendColumn (Mono.Unix.Catalog.GetString("Bin"), new Gtk.CellRendererText (), "text", 0);
+			NodeView.AppendColumn (Mono.Unix.Catalog.GetString("Oct"), new Gtk.CellRendererText (), "text", 1);
+			NodeView.AppendColumn (Mono.Unix.Catalog.GetString("Dec"), new Gtk.CellRendererText (), "text", 2);
+			NodeView.AppendColumn (Mono.Unix.Catalog.GetString("Hex"), new Gtk.CellRendererText (), "text", 3);
+			NodeView.AppendColumn (Mono.Unix.Catalog.GetString("ASCII"), new Gtk.CellRendererText (), "text", 4);
 			NodeView.Selection.Mode = SelectionMode.Multiple;
 			p_NodeStore = new NodeStore(typeof(ByteTreeNode));
 			NodeView.NodeStore = p_NodeStore;
@@ -114,6 +119,11 @@ namespace libarduinotty.Widgets
 			ArduinoSerial.BytesTransmitted += new EventHandler(BytesTransmitted);
 			ArduinoSerial.Connection += new EventHandler(OnConnection);
 			ArduinoSerial.Disconnection += new EventHandler(OnDisconnection);
+		}
+		
+		public void SetFont(Pango.FontDescription font)
+		{
+			TextView.ModifyFont(font);
 		}
 		
 		protected override void OnShown()
@@ -149,26 +159,59 @@ namespace libarduinotty.Widgets
 		
 		protected void OnOpenButtonClicked(object sender, System.EventArgs e)
 		{
-			FileChooserDialog fd = new FileChooserDialog("Open bytes ...", null, FileChooserAction.Save, "Cancel", ResponseType.Cancel, "Open", ResponseType.Accept);
+			FileChooserDialog fd = new FileChooserDialog(Mono.Unix.Catalog.GetString("Open bytes ..."), null, FileChooserAction.Save, Mono.Unix.Catalog.GetString("Cancel"), ResponseType.Cancel, Mono.Unix.Catalog.GetString("Open"), ResponseType.Accept);
+			FileFilter allfilter = new FileFilter();
+			allfilter.Name = Mono.Unix.Catalog.GetString("Compatible formats");
+			allfilter.AddMimeType("application/xml");
+			allfilter.AddPattern("*.axml");
+			allfilter.AddMimeType("text/plain");
+			allfilter.AddPattern("*.txt");
+			allfilter.AddMimeType("application/octet-stream");
+			allfilter.AddPattern("*.bin");
+			FileFilter axmlFilter = new FileFilter();
+			axmlFilter.Name = Mono.Unix.Catalog.GetString("AXML");
+			axmlFilter.AddMimeType("application/xml");
+			axmlFilter.AddPattern("*.axml");
+			FileFilter txtFilter = new FileFilter();
+			txtFilter.Name = Mono.Unix.Catalog.GetString("Textfile");
+			txtFilter.AddMimeType("text/plain");
+			txtFilter.AddPattern("*.txt");
+			FileFilter binFilter = new FileFilter();
+			binFilter.Name = Mono.Unix.Catalog.GetString("Binary file");
+			binFilter.AddMimeType("application/octet-stream");
+			binFilter.AddPattern("*.bin");
+			fd.AddFilter(allfilter);
+			fd.AddFilter(axmlFilter);
+			fd.AddFilter(txtFilter);
+			fd.AddFilter(binFilter);
 			fd.SetCurrentFolder(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal));
-			
 			if(fd.Run() == (int)ResponseType.Accept)
 			{
+				List<byte> bytes = new List<byte>();;
 				if(fd.Filename.EndsWith(".axml"))
 				{
-					List<byte> bytes = ArduinoSerial.LoadBuffer(fd.Filename);
-					p_AllTransmittedBytes.Clear();
-					p_NodeStore.Clear();
-					TextView.Buffer.Text = "";
-					ByteTreeNode btn;
-					for(int i = 0; i < bytes.Count; i++)
-					{
-						btn = new ByteTreeNode(bytes[i]);
-						p_AllTransmittedBytes.Add(btn.Byte);
-						p_ByteTreeNodes.Add(btn);
-						p_NodeStore.AddNode(btn);
-						TextView.Buffer.Text = TextView.Buffer.Text + ((char)btn.Byte).ToString();
-					}
+					bytes = ArduinoSerial.LoadBufferAXML(fd.Filename);
+				}
+				if(fd.Filename.EndsWith(".txt"))
+				{
+					bytes = ArduinoSerial.LoadBufferTXT(fd.Filename);
+					
+				}
+				if(fd.Filename.EndsWith(".bin"))
+				{
+					bytes = ArduinoSerial.LoadBufferBIN(fd.Filename);
+				}
+				p_AllTransmittedBytes.Clear();
+				p_NodeStore.Clear();
+				TextView.Buffer.Text = "";
+				ByteTreeNode btn;
+				for(int i = 0; i < bytes.Count; i++)
+				{
+					btn = new ByteTreeNode(bytes[i]);
+					p_AllTransmittedBytes.Add(btn.Byte);
+					p_ByteTreeNodes.Add(btn);
+					p_NodeStore.AddNode(btn);
+					TextView.Buffer.Text = TextView.Buffer.Text + ((char)btn.Byte).ToString();
 				}
 			}
 			fd.Destroy();
@@ -176,12 +219,59 @@ namespace libarduinotty.Widgets
 		
 		protected void OnSaveButtonClicked(object sender, System.EventArgs e)
 		{
-			FileChooserDialog fd = new FileChooserDialog("Save bytes ...", null, FileChooserAction.Save, "Cancel", ResponseType.Cancel, "Save", ResponseType.Accept);
+			FileChooserDialog fd = new FileChooserDialog(Mono.Unix.Catalog.GetString("Save bytes ..."), null, FileChooserAction.Save, Mono.Unix.Catalog.GetString("Cancel"), ResponseType.Cancel, Mono.Unix.Catalog.GetString("Save"), ResponseType.Accept);
+			FileFilter axmlFilter = new FileFilter();
+			axmlFilter.Name = Mono.Unix.Catalog.GetString("AXML");
+			axmlFilter.AddMimeType("application/xml");
+			axmlFilter.AddPattern("*.axml");
+			FileFilter txtFilter = new FileFilter();
+			txtFilter.Name = Mono.Unix.Catalog.GetString("Textfile");
+			txtFilter.AddMimeType("text/plain");
+			txtFilter.AddPattern("*.txt");
+			FileFilter binFilter = new FileFilter();
+			binFilter.Name = Mono.Unix.Catalog.GetString("Binary file");
+			binFilter.AddMimeType("application/octet-stream");
+			binFilter.AddPattern("*.bin");
+			fd.AddFilter(axmlFilter);
+			fd.AddFilter(txtFilter);
+			fd.AddFilter(binFilter);
 			fd.SetCurrentFolder(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal));
-			fd.CurrentName = "bytes.axml";
+			fd.CurrentName = "bytes";
 			if(fd.Run() == (int)ResponseType.Accept)
 			{
-				ArduinoSerial.SaveBuffer(fd.Filename, p_AllTransmittedBytes);
+				if(fd.Filter == axmlFilter)
+				{
+					if(fd.Filename.EndsWith(".axml"))
+					{
+						ArduinoSerial.SaveBufferAXML(fd.Filename, p_AllTransmittedBytes);
+					}
+					else
+					{
+						ArduinoSerial.SaveBufferAXML(fd.Filename + ".axml", p_AllTransmittedBytes);
+					}
+				}
+				if(fd.Filter == txtFilter)
+				{
+					if(fd.Filename.EndsWith(".txt"))
+					{
+						ArduinoSerial.SaveBufferTXT(fd.Filename, p_AllTransmittedBytes);
+					}
+					else
+					{
+						ArduinoSerial.SaveBufferTXT(fd.Filename + ".txt", p_AllTransmittedBytes);
+					}
+				}
+				if(fd.Filter == binFilter)
+				{
+					if(fd.Filename.EndsWith(".bin"))
+					{
+						ArduinoSerial.SaveBufferBIN(fd.Filename, p_AllTransmittedBytes);
+					}
+					else
+					{
+						ArduinoSerial.SaveBufferBIN(fd.Filename + ".bin", p_AllTransmittedBytes);
+					}
+				}
 			}
 			fd.Destroy();
 		}
@@ -243,6 +333,11 @@ namespace libarduinotty.Widgets
 			{
 				TransmitButton.Sensitive = false;
 			}
+		}
+
+		protected void OnRecordToggleButtonClicked (object sender, System.EventArgs e)
+		{
+			ArduinoSerial.FreezeTransmittedBytes = !RecordToggleButton.Active;
 		}
 	}
 }

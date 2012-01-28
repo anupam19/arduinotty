@@ -8,6 +8,7 @@ namespace libarduinotty.Widgets
 		private global::Gtk.HBox HBox;
 		private global::Gtk.Alignment Alignment;
 		private global::Gtk.ComboBoxEntry ComboBoxEntry;
+		private global::Gtk.CheckButton CheckButton;
 		private global::Gtk.ComboBox ComboBox;
 		private global::Gtk.Button Button;
         
@@ -36,6 +37,18 @@ namespace libarduinotty.Widgets
 			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.HBox [this.Alignment]));
 			w2.Position = 0;
 			// Container child HBox.Gtk.Box+BoxChild
+			this.CheckButton = new global::Gtk.CheckButton ();
+			this.CheckButton.CanFocus = true;
+			this.CheckButton.Name = "CheckButton";
+			this.CheckButton.Label = "";
+			this.CheckButton.Active = true;
+			this.CheckButton.DrawIndicator = true;
+			this.CheckButton.UseUnderline = true;
+			this.HBox.Add (this.CheckButton);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.HBox [this.CheckButton]));
+			w3.Position = 1;
+			w3.Expand = false;
+			// Container child HBox.Gtk.Box+BoxChild
 			this.ComboBox = global::Gtk.ComboBox.NewText ();
 			this.ComboBox.AppendText (global::Mono.Unix.Catalog.GetString ("Bin"));
 			this.ComboBox.AppendText (global::Mono.Unix.Catalog.GetString ("Oct"));
@@ -45,10 +58,10 @@ namespace libarduinotty.Widgets
 			this.ComboBox.Name = "ComboBox";
 			this.ComboBox.Active = 4;
 			this.HBox.Add (this.ComboBox);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.HBox [this.ComboBox]));
-			w3.Position = 1;
-			w3.Expand = false;
-			w3.Fill = false;
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.HBox [this.ComboBox]));
+			w4.Position = 2;
+			w4.Expand = false;
+			w4.Fill = false;
 			// Container child HBox.Gtk.Box+BoxChild
 			this.Button = new global::Gtk.Button ();
 			this.Button.Sensitive = false;
@@ -56,29 +69,29 @@ namespace libarduinotty.Widgets
 			this.Button.Name = "Button";
 			this.Button.UseUnderline = true;
 			// Container child Button.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w4 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w5 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w5 = new global::Gtk.HBox ();
-			w5.Spacing = 2;
+			global::Gtk.HBox w6 = new global::Gtk.HBox ();
+			w6.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w6 = new global::Gtk.Image ();
-			w6.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-apply", global::Gtk.IconSize.Menu);
+			global::Gtk.Image w7 = new global::Gtk.Image ();
+			w7.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-apply", global::Gtk.IconSize.Menu);
+			w6.Add (w7);
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Label w9 = new global::Gtk.Label ();
+			w6.Add (w9);
 			w5.Add (w6);
-			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w8 = new global::Gtk.Label ();
-			w5.Add (w8);
-			w4.Add (w5);
-			this.Button.Add (w4);
+			this.Button.Add (w5);
 			this.HBox.Add (this.Button);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.HBox [this.Button]));
-			w12.Position = 2;
-			w12.Expand = false;
-			w12.Fill = false;
-			this.VBox.Add (this.HBox);
-			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.VBox [this.HBox]));
-			w13.Position = 0;
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.HBox [this.Button]));
+			w13.Position = 3;
 			w13.Expand = false;
 			w13.Fill = false;
+			this.VBox.Add (this.HBox);
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.VBox [this.HBox]));
+			w14.Position = 0;
+			w14.Expand = false;
+			w14.Fill = false;
 			this.Add (this.VBox);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();

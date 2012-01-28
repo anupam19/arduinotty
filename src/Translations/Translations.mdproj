@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ItemType>TranslationProject</ItemType>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{51DE3BEC-29DC-4BCB-98EE-813D60A78DA0}</ProjectGuid>
+    <relPath>locale</relPath>
+    <outputType>RelativeToOutput</outputType>
+    <packageName>arduinotty</packageName>
+    <translations>
+      <translations>
+        <Translation isoCode="en" />
+        <Translation isoCode="de" />
+      </translations>
+    </translations>
+  </PropertyGroup>
+</Project>

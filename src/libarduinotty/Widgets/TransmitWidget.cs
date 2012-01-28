@@ -129,6 +129,9 @@ namespace libarduinotty.Widgets
 		public TransmitWidget()
 		{
 			this.Build();
+			CheckButton.TooltipMarkup = Mono.Unix.Catalog.GetString("Line break.");
+			ComboBox.TooltipMarkup = Mono.Unix.Catalog.GetString("Select byte-format.");
+			Button.TooltipMarkup = Mono.Unix.Catalog.GetString("Transmit bytes.");
 			p_Lines = new List<string>();
 			p_LineTypes = new List<int>();
 			ArduinoSerial.Connection += new EventHandler(OnConnection);
@@ -145,6 +148,14 @@ namespace libarduinotty.Widgets
 			{
 				Button.Sensitive = true;
 			}
+			if(ComboBox.ActiveText == Mono.Unix.Catalog.GetString("ASCII"))
+			{
+				CheckButton.Show();
+			}
+			else
+			{
+				CheckButton.Hide();
+			}
 		}
 
 		protected void OnButtonClicked(object sender, System.EventArgs e)
@@ -156,7 +167,18 @@ namespace libarduinotty.Widgets
 		{
 			if(!Error)
 			{
-				ArduinoSerial.TransmitBytes(Bytes);
+				List<byte> bytes = Bytes;
+				if(CheckButton.Active && (ComboBox.ActiveText == Mono.Unix.Catalog.GetString("ASCII")))
+				{
+					List<byte> bytesWithNewLine = Bytes;
+					bytesWithNewLine.Add(Convert.ToByte(13));
+					bytesWithNewLine.Add(Convert.ToByte(10));
+					ArduinoSerial.TransmitBytes(bytesWithNewLine);
+				}
+				else
+				{
+					ArduinoSerial.TransmitBytes(bytes);
+				}
 				bool exists = false;
 				for(int i = 0; i < p_Lines.Count; i++)
 				{
@@ -168,16 +190,16 @@ namespace libarduinotty.Widgets
 					switch(ComboBox.Active)
 					{
 						case 0:
-							text = text + "Bin: ";
+							text = text + Mono.Unix.Catalog.GetString("Bin: ");
 							break;
 						case 1:
-							text = text + "Oct: ";
+							text = text + Mono.Unix.Catalog.GetString("Oct: ");
 							break;
 						case 2:
-							text = text + "Dec: ";
+							text = text + Mono.Unix.Catalog.GetString("Dec: ");
 							break;
 						case 3:
-							text = text + "Hex: ";
+							text = text + Mono.Unix.Catalog.GetString("Hex: ");
 							break;
 					}
 					text = text + ComboBoxEntry.ActiveText;

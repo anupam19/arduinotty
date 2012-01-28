@@ -1,0 +1,321 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2012-01-24 16:15:16+0100\n"
+"PO-Revision-Date: 2012-01-24 16:15:16+0100\n"
+"Last-Translator: clausismus\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: MonoDevelop Gettext addin\n"
+
+#: ../libarduinotty/Widgets/ConnectionWidget.cs:63
+#: ../libarduinotty/Widgets/ConnectionWidget.cs:170
+msgid "Connect."
+msgstr ""
+
+#: ../libarduinotty/Widgets/ConnectionWidget.cs:64
+msgid "Available ports."
+msgstr ""
+
+#: ../libarduinotty/Widgets/ConnectionWidget.cs:65
+msgid "Baudrate."
+msgstr ""
+
+#: ../libarduinotty/Widgets/ConnectionWidget.cs:162
+msgid "Disconnect."
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmitWidget.cs:131
+msgid "Line break."
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmitWidget.cs:132
+msgid "Select byte-format."
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmitWidget.cs:133
+msgid "Transmit bytes."
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmitWidget.cs:150
+#: ../libarduinotty/Widgets/TransmitWidget.cs:170
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:108
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:108
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmitWidget.cs:56
+msgid "ASCII"
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmitWidget.cs:192
+msgid "Bin: "
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmitWidget.cs:195
+msgid "Oct: "
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmitWidget.cs:198
+msgid "Dec: "
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmitWidget.cs:201
+msgid "Hex: "
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:99
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:99
+msgid "Create new byte-list."
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:100
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:100
+msgid "Open byte-list."
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:101
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:101
+msgid "Save byte-list."
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:102
+msgid "Record outgoing bytes."
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:103
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:103
+msgid "Transmit selected bytes."
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:104
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:104
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmitWidget.cs:52
+msgid "Bin"
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:105
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:105
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmitWidget.cs:53
+msgid "Oct"
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:106
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:106
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmitWidget.cs:54
+msgid "Dec"
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:107
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:107
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmitWidget.cs:55
+msgid "Hex"
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:161
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:161
+msgid "Open bytes ..."
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:161
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:221
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:161
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:221
+msgid "Cancel"
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:161
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:161
+msgid "Open"
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:163
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:163
+msgid "Compatible formats"
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:171
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:223
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:171
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:223
+msgid "AXML"
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:175
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:227
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:175
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:227
+msgid "Textfile"
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:179
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:231
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:179
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:231
+msgid "Binary file"
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:221
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:221
+msgid "Save bytes ..."
+msgstr ""
+
+#: ../libarduinotty/Widgets/TransmittedBytesWidget.cs:221
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:221
+msgid "Save"
+msgstr ""
+
+#: ../libarduinotty/Widgets/ReceivedBytesWidget.cs:102
+msgid "Record incoming bytes."
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.ConnectionWidget.cs:64
+msgid "Port:"
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.ConnectionWidget.cs:81
+#: ../arduinotty/gtk-gui/arduinotty.PreferencesDialog.cs:101
+msgid "Baudrate:"
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmittedBytesWidget.cs:37
+msgid "Transmitted:"
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmittedBytesWidget.cs:62
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.ReceivedBytesWidget.cs:85
+msgid "Text"
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmittedBytesWidget.cs:80
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.ReceivedBytesWidget.cs:103
+msgid "Table"
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.ReceivedBytesWidget.cs:60
+msgid "Received:"
+msgstr ""
+
+#: ../arduinotty/MainWindow.cs:23
+msgid "View."
+msgstr ""
+
+#: ../arduinotty/MainWindow.cs:24
+msgid "Preferences."
+msgstr ""
+
+#: ../arduinotty/MainWindow.cs:25
+msgid "Info."
+msgstr ""
+
+#: ../arduinotty/MainWindow.cs:48
+#: ../arduinotty/gtk-gui/arduinotty.MainWindow.cs:28
+msgid "Arduino TTY"
+msgstr ""
+
+#: ../arduinotty/MainWindow.cs:112
+msgid "Disconnect"
+msgstr ""
+
+#: ../arduinotty/MainWindow.cs:114
+msgid "Show \"Arduino TTY\""
+msgstr ""
+
+#: ../arduinotty/MainWindow.cs:116
+msgid "Hide \"Arduino TTY\""
+msgstr ""
+
+#: ../arduinotty/MainWindow.cs:118
+msgid "Quit"
+msgstr ""
+
+#: ../arduinotty/MainWindow.cs:126
+msgid "Connect with"
+msgstr ""
+
+#: ../arduinotty/MainWindow.cs:218
+msgid "A serial terminal for the Arduino platform."
+msgstr ""
+
+#: ../arduinotty/MainWindow.cs:219
+msgid ""
+"\"Arduino TTY\" is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public\n"
+"License as published by the Free Software Foundation;\n"
+"either version 2 of the License, or (at your option) any\n"
+"later version.\n"
+"\n"
+"\"Arduino TTY\" is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the\n"
+"implied warranty of MERCHANTABILITY or FITNESS\n"
+"FOR A PARTICULAR PURPOSE.  See the GNU General Public\n"
+"License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General\n"
+"Public License along with \"Arduino TTY\"; if not, write to the\n"
+"Free Software Foundation, Inc., 59 Temple Place, Suite\n"
+"330, Boston, MA  02111-1307  USA"
+msgstr ""
+
+#: ../arduinotty/gtk-gui/arduinotty.MainWindow.cs:66
+#: ../arduinotty/gtk-gui/arduinotty.PreferencesDialog.cs:84
+msgid "Received"
+msgstr ""
+
+#: ../arduinotty/gtk-gui/arduinotty.MainWindow.cs:67
+#: ../arduinotty/gtk-gui/arduinotty.PreferencesDialog.cs:85
+msgid "Transmitted"
+msgstr ""
+
+#: ../arduinotty/gtk-gui/arduinotty.MainWindow.cs:68
+#: ../arduinotty/gtk-gui/arduinotty.PreferencesDialog.cs:86
+msgid "Both"
+msgstr ""
+
+#: ../arduinotty/PreferencesDialog.cs:11
+msgid "Adjust baudrate."
+msgstr ""
+
+#: ../arduinotty/PreferencesDialog.cs:12
+msgid "Adjust view."
+msgstr ""
+
+#: ../arduinotty/PreferencesDialog.cs:13
+msgid "Adjust font."
+msgstr ""
+
+#: ../arduinotty/PreferencesDialog.cs:14
+msgid "Apply preferences."
+msgstr ""
+
+#: ../arduinotty/PreferencesDialog.cs:15
+msgid "Cancel."
+msgstr ""
+
+#: ../arduinotty/gtk-gui/arduinotty.PreferencesDialog.cs:37
+msgid "Preferences"
+msgstr ""
+
+#: ../arduinotty/gtk-gui/arduinotty.PreferencesDialog.cs:69
+msgid "Use settings from last session."
+msgstr ""
+
+#: ../arduinotty/gtk-gui/arduinotty.PreferencesDialog.cs:124
+msgid "View:"
+msgstr ""
+
+#: ../arduinotty/gtk-gui/arduinotty.PreferencesDialog.cs:140
+msgid "<b>Settings on startup</b>"
+msgstr ""
+
+#: ../arduinotty/gtk-gui/arduinotty.PreferencesDialog.cs:178
+msgid "<b>Font</b>"
+msgstr ""
+
+#: ../arduinotty/gtk-gui/arduinotty.PreferencesDialog.cs:207
+msgid "Show \"Arduino TTY\" symbol"
+msgstr ""
+
+#: ../arduinotty/gtk-gui/arduinotty.PreferencesDialog.cs:219
+msgid "<b>Symbol</b>"
+msgstr ""
+

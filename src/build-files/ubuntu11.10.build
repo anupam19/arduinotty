@@ -12,16 +12,20 @@
         <include name="/usr/lib/mono/2.0/Mono.Posix.dll"/>
         <include name="/usr/lib/mono/4.0/System.dll"/>
         <include name="/usr/lib/mono/4.0/System.Xml.dll"/>
+        <include name="/usr/lib/cli/pango-sharp-2.0/pango-sharp.dll"/>
       </references>
       <sources>
         <include name="../arduinotty/Main.cs"/>
         <include name="../arduinotty/MainWindow.cs"/>
+        <include name="../arduinotty/Preferences.cs"/>
+        <include name="../arduinotty/PreferencesDialog.cs"/>
         <include name="../arduinotty/gtk-gui/arduinotty.MainWindow.cs"/>
+        <include name="../arduinotty/gtk-gui/arduinotty.PreferencesDialog.cs"/>
         <include name="../arduinotty/gtk-gui/generated.cs"/>
       </sources>
     </csc>
   </target>
-  <target name="buildlib">
+  <target name="buildlib" depends="buildlocale">
     <mkdir dir="../bin"/>
     <csc target="library" output="../bin/libarduinotty.dll">
       <references>
@@ -31,6 +35,7 @@
         <include name="/usr/lib/mono/2.0/Mono.Posix.dll"/>
         <include name="/usr/lib/mono/4.0/System.dll"/>
         <include name="/usr/lib/mono/4.0/System.Xml.dll"/>
+        <include name="/usr/lib/cli/pango-sharp-2.0/pango-sharp.dll"/>
       </references>
       <sources>
         <include name="../libarduinotty/ArduinoSerial.cs"/>
@@ -47,6 +52,20 @@
         <include name="../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmitWidget.cs"/>
       </sources>
     </csc>
+  </target>
+  <target name="buildlocale">
+    <mkdir dir="../bin/locale/de/LC_MESSAGES"/>
+    <mkdir dir="../bin/locale/en/LC_MESSAGES"/>
+    <exec program="msgfmt">
+      <arg value="../Translations/de.po"/>
+      <arg value="-o"/>
+      <arg value="../bin/locale/de/LC_MESSAGES/arduinotty.mo"/>
+    </exec>
+    <exec program="msgfmt">
+      <arg value="../Translations/en.po"/>
+      <arg value="-o"/>
+      <arg value="../bin/locale/en/LC_MESSAGES/arduinotty.mo"/>
+    </exec>
   </target>
   <target name="clean">
     <delete dir="../bin" failonerror="false"/>

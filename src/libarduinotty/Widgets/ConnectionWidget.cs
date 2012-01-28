@@ -20,6 +20,13 @@ namespace libarduinotty.Widgets
 		private Thread p_CheckPorts;
 		private string p_CurrentSelectedPort = "";
 		
+		public int Baudrate
+		{
+			get 
+			{ return Convert.ToInt32(BaudrateSpinButton.Value); }
+			set
+			{ BaudrateSpinButton.Value = Convert.ToDouble(value); }
+		}
 		public bool HideBaudrate
 		{
 			get { return !p_BaudrateVisible; }
@@ -54,7 +61,11 @@ namespace libarduinotty.Widgets
 		public ConnectionWidget()
 		{
 			this.Build();
+			ConnectToggleButton.TooltipMarkup = Mono.Unix.Catalog.GetString("Connect.");
+			PortComboBox.TooltipMarkup = Mono.Unix.Catalog.GetString("Available ports.");
+			BaudrateSpinButton.TooltipMarkup = Mono.Unix.Catalog.GetString("Baudrate.");
 			p_SerialPorts = ArduinoSerial.AvailablePorts;
+			ArduinoSerial.Connection += new EventHandler(OnConnection);
 			ArduinoSerial.Disconnection += new EventHandler(OnDisconnection);
 			RefreshUI(new object(), new EventArgs());
 			p_RefreshUIEvent += new EventHandler(RefreshUI);
@@ -123,15 +134,6 @@ namespace libarduinotty.Widgets
 				if((PortComboBox.ActiveText != "") && (ArduinoSerial.AvailablePorts.Length > 0))
 				{
 					bool connected = ArduinoSerial.Connect(PortComboBox.ActiveText, Convert.ToInt32(BaudrateSpinButton.Value));
-					if(connected)
-					{
-						PortComboBox.Sensitive = false;
-						BaudrateSpinButton.Sensitive = false;
-					}
-					else
-					{
-						ConnectToggleButton.Active = false;
-					}
 				}
 			}
 			else
@@ -153,11 +155,24 @@ namespace libarduinotty.Widgets
 			}
 		}
 			
+		private void OnConnection(object sender, EventArgs e)
+		{
+			ConnectToggleButton.Active = true;
+			PortComboBox.Sensitive = false;
+			BaudrateSpinButton.Sensitive = false;
+			ConnectToggleButton.TooltipText = Mono.Unix.Catalog.GetString("Disconnect.");
+			for(int i = 0; i < p_SerialPorts.Length; i++)
+			{
+				if(p_SerialPorts[i] == ArduinoSerial.Port) PortComboBox.Active = i;
+			}
+		}
+		
 		private void OnDisconnection(object sender, EventArgs e)
 		{
 			ConnectToggleButton.Active = false;
 			PortComboBox.Sensitive = true;
 			BaudrateSpinButton.Sensitive = true;
+			ConnectToggleButton.TooltipText = Mono.Unix.Catalog.GetString("Connect.");
 		}
 	
 		public void StopCheckPortsThread()

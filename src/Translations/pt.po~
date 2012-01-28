@@ -1,0 +1,75 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2012-01-22 18:46:42+0100\n"
+"PO-Revision-Date: 2012-01-22 18:46:43+0100\n"
+"Last-Translator: clausismus\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: MonoDevelop Gettext addin\n"
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.ConnectionWidget.cs:64
+msgid "Port:"
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.ConnectionWidget.cs:81
+msgid "Baudrate:"
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmitWidget.cs:39
+msgid "Bin"
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmitWidget.cs:40
+msgid "Oct"
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmitWidget.cs:41
+msgid "Dec"
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmitWidget.cs:42
+msgid "Hex"
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmitWidget.cs:43
+msgid "ASCII"
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmittedBytesWidget.cs:36
+msgid "Transmitted:"
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmittedBytesWidget.cs:61
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.ReceivedBytesWidget.cs:61
+msgid "Text"
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.TransmittedBytesWidget.cs:79
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.ReceivedBytesWidget.cs:79
+msgid "Table"
+msgstr ""
+
+#: ../libarduinotty/gtk-gui/libarduinotty.Widgets.ReceivedBytesWidget.cs:36
+msgid "Received:"
+msgstr ""
+
+#: ../arduinotty/MainWindow.cs:17
+#: ../arduinotty/gtk-gui/arduinotty.MainWindow.cs:25
+msgid "Arduino TTY"
+msgstr ""
+
+#: ../arduinotty/gtk-gui/arduinotty.MainWindow.cs:62
+msgid "Received"
+msgstr ""
+
+#: ../arduinotty/gtk-gui/arduinotty.MainWindow.cs:63
+msgid "Transmitted"
+msgstr ""
+
+#: ../arduinotty/gtk-gui/arduinotty.MainWindow.cs:64
+msgid "Both"
+msgstr ""
+

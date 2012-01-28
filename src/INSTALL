@@ -8,13 +8,13 @@ INSTALL:
 
 1.1. Install dependencies:
 
-     You need "mono" and "gtk-sharp-2.0" to run "Arduino TTY" 
-     and "nant" to compile it.
+     You need "mono", "pango-sharp" and "gtk-sharp-2.0" to
+     run "Arduino TTY" and "nant" to compile it.
      
      Ubuntu Oneric Ocelot: 
      
      sudo apt-get update
-     sudo apt-get install mono-runtime gtk-sharp2 nant
+     sudo apt-get install mono-runtime notify-sharp gtk-sharp2 nant
 
 1.2. Compile and install "Arduino TTY":
 
@@ -61,6 +61,7 @@ INSTALL:
       <include name="Mono.Posix.dll"/>
       <include name="System.dll"/>
       <include name="System.Xml.dll"/>
+      <include name="pango-sharp.dll"/>
     </references>
 
     2. Block
@@ -72,6 +73,7 @@ INSTALL:
       <include name="Mono.Posix.dll"/>
       <include name="System.dll"/>
       <include name="System.Xml.dll"/>
+      <include name="pango-sharp.dll"/>
     </references>
 
     You have to declare the full path of every listed library, 
@@ -93,6 +95,7 @@ INSTALL:
       <include name="/usr/lib/mono/2.0/Mono.Posix.dll"/>
       <include name="/usr/lib/mono/4.0/System.dll"/>
       <include name="/usr/lib/mono/4.0/System.Xml.dll"/>
+      <include name="/usr/lib/cli/pango-sharp-2.0/pango-sharp.dll"/>
     </references>
 
     2. Block
@@ -104,6 +107,7 @@ INSTALL:
       <include name="/usr/lib/mono/2.0/Mono.Posix.dll"/>
       <include name="/usr/lib/mono/4.0/System.dll"/>
       <include name="/usr/lib/mono/4.0/System.Xml.dll"/>
+      <include name="/usr/lib/cli/pango-sharp-2.0/pango-sharp.dll"/>
     </references>
 
     When you're ready, save this file.

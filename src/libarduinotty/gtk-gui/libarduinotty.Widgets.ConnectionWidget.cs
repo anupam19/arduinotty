@@ -86,7 +86,7 @@ namespace libarduinotty.Widgets
 			w13.Expand = false;
 			w13.Fill = false;
 			// Container child HBox.Gtk.Box+BoxChild
-			this.BaudrateSpinButton = new global::Gtk.SpinButton (300, 115200, 100);
+			this.BaudrateSpinButton = new global::Gtk.SpinButton (300, 500000, 100);
 			this.BaudrateSpinButton.CanFocus = true;
 			this.BaudrateSpinButton.Name = "BaudrateSpinButton";
 			this.BaudrateSpinButton.Adjustment.PageIncrement = 10;

@@ -4,6 +4,35 @@
 
 CHANGELOG:
 
+"Arduino TTY v0.2", released on 28-January-2012:
+
+   - Translations added.
+
+   - Tooltips added.
+
+   - Baudrate can now be set from 300 to 500000 bauds.
+
+   - Adjustments on the "ArduinoSerial" class.
+
+   - "PreferencesDialog" class written.
+
+   - "Preferences" class written.
+
+   - You can save and open the bytes now as Xml-File, as textfile and as binary file.
+
+   - Record button added to "TransmittedBytesWidget" and "ReceivedBytesWidget".
+     This button declare if the incoming and outgoing bytes will be recorded.
+
+   - Checkbutton added to "TransmitWidget". 
+     By activating this button, a line break will be written at the end of the line.
+     The checkbutton is only visible, when "ASCII" is selected.
+
+   - Aboutdialog added to the "MainWindow".
+
+   - Notify-Icon added to the "MainWindow", so you can show and hide the "MainWindow" with a left-click.
+     A menu popups with a right-click. On this menu you can connect and disconnect,
+     as well you can quit the application.
+
 "Arduino TTY v0.1", released on 14-January-2012:
 
    - "MainWindow" class written.
